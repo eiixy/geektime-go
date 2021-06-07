@@ -1,7 +1,6 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
 	"geektime-go/02/code"
 	"geektime-go/02/data"
@@ -31,7 +30,7 @@ func main() {
 	dao := data.New()
 	users, err := dao.GetUsers([]uint{1, 2, 3})
 
-	if errors.Is(err, sql.ErrNoRows) {
+	if err != nil {
 		fmt.Printf("original error: %T %v\n", errors.Cause(err), errors.Cause(err))
 		fmt.Printf("stack trace:\n%+v\n", err)
 		return

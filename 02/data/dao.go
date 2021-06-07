@@ -1,23 +1,25 @@
 package data
 
 import (
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
+	"database/sql"
+	"fmt"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // Dao dao
 type Dao struct {
-	db *gorm.DB
+	db *sql.DB
 }
 
 // New init mysql db
 func New() (dao *Dao) {
 	dsn := "root:123456@tcp(127.0.0.1:3306)/geektime-go?charset=utf8mb4"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+
+	db, err := sql.Open("mysql", dsn)
 	if err != nil {
+		fmt.Printf("mysql open error: %+v\r\n", err)
 		panic("failed to connect database")
 	}
-	// 迁移 schema
-	db.AutoMigrate(&User{})
-	return &Dao{db}
+	return &Dao{db: db}
 }

@@ -1,0 +1,5 @@
+database,type,key,size_in_bytes,encoding,num_elements,len_largest_element,expiry
+0,set,test_set,84,intset,5,8,
+0,list,test_list,177,quicklist,5,8,
+0,hash,test_hash,94,ziplist,3,8,
+0,string,test_string,56,string,8,8,

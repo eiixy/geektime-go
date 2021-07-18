@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package account.service;
+
+service AccountService {
+  rpc GetAccountInfo(GetAccountInfoRequest) returns (AccountInfoReply);
+}
+
+message GetAccountInfoRequest{
+  int32 id = 1;
+}
+message AccountInfoReply{
+  int32 id = 1;
+  int32 username = 2;
+  int32 email = 3;
+}
+
+
